@@ -1,4 +1,4 @@
-const CartData = require("../../models/cart_model");
+const CartData = require("../../../models/cart_model");
 
 async function addCart(req, res) {
   try {

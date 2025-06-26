@@ -2,42 +2,48 @@ const express = require("express");
 const router = express.Router();
 
 /// USER ROUTES ///
-const { userRegister } = require("../routes/userdata_routes/user_register");
-const { userLogin } = require("../routes/userdata_routes/user_login");
-const { userDelete } = require("../routes/userdata_routes/user_delete");
-const { getAllUsers } = require("../routes/userdata_routes/all_user");
-const { updateUser } = require("../routes/userdata_routes/user_update");
 const {
-  resetPassword,
-} = require("../routes/userdata_routes/user_resetpassword");
-const { addCart } = require("../routes/userdata_routes/use_add_cart_product");
-const { showCartData } = require("../routes/userdata_routes/user_all_cartdata");
-const {
-  addReview,
-} = require("../routes/userdata_routes/user_add_review_product");
+  userRegister,
+} = require("../routes/userdata_routes/auth/user_register");
+const { userLogin } = require("../routes/userdata_routes/auth/user_login");
+const { userDelete } = require("../routes/userdata_routes/auth/user_delete");
+const { getAllUsers } = require("../routes/userdata_routes/auth/all_user");
+const { updateUser } = require("../routes/userdata_routes/auth/user_update");
 const {
   forgotPassword,
-} = require("../routes/userdata_routes/user_forgot_password");
+} = require("../routes/userdata_routes/auth/user_forgot_password");
+const {
+  resetPassword,
+} = require("../routes/userdata_routes/auth/user_resetpassword");
+const {
+  addCart,
+} = require("../routes/userdata_routes/add_cart/use_add_cart_product");
+const {
+  showCartData,
+} = require("../routes/userdata_routes/add_cart/user_all_cartdata");
+const {
+  addReview,
+} = require("../routes/userdata_routes/reviews/user_add_review_product");
+
 const {
   removeCartData,
-} = require("../routes/userdata_routes/user_remove_cartdata");
-const { getAllReviewsProduct} = require("../routes/userdata_routes/use_get_all_reviews_product");
-
+} = require("../routes/userdata_routes/add_cart/user_remove_cartdata");
+const {
+  getAllReviewsProduct,
+} = require("../routes/userdata_routes/reviews/use_get_all_reviews_product");
 
 router.post("/user/register", userRegister);
 router.post("/user/login", userLogin);
 router.delete("/user/delete/:id", userDelete);
+router.post("/user/resetPassword/:token", resetPassword);
+router.post("/user/forgotPassword", forgotPassword);
 router.put("/user/update/:id", updateUser);
 router.get("/user/getAllUsers", getAllUsers);
-router.post("/user/resetPassword/:token", resetPassword);
 router.post("/user/addCart", addCart);
 router.post("/user/showCartData", showCartData);
-router.post("/user/addReview", addReview);
-router.post("/user/forgotPassword", forgotPassword);
 router.delete("/user/removeCartData", removeCartData);
+router.post("/user/addReview", addReview);
 router.get("/user/getAllReviewsProduct", getAllReviewsProduct);
-
-
 
 /// PRODUCT ROUTES ///
 const { addProduct } = require("../routes/product_routes/add_product");

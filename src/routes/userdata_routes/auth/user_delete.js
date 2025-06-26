@@ -1,4 +1,4 @@
-const UserData = require("../../models/user_mode");
+const UserData = require("../../../models/user_mode");
 
 // Delete User
 async function userDelete(req, res) {

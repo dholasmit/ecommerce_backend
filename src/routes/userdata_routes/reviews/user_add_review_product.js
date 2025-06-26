@@ -1,4 +1,4 @@
-const addReviewData = require("../../models/add_review_model");
+const addReviewData = require("../../../models/add_review_model");
 
 async function addReview(req, res) {
   try {
