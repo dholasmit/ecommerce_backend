@@ -1,5 +1,5 @@
 require("dotenv").config();
-const UserData = require("../../../models/user_mode");
+const UserData = require("../../../models/user_model");
 const bcrypt = require("bcrypt");
 
 // 1 Register User

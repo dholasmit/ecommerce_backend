@@ -1,4 +1,4 @@
-const UserData = require("../../../models/user_mode");
+const UserData = require("../../../models/user_model");
 
 // update user is pending its not working right now
 async function updateUser(req, res) {

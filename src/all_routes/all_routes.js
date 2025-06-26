@@ -31,6 +31,14 @@ const {
 const {
   getAllReviewsProduct,
 } = require("../routes/userdata_routes/reviews/use_get_all_reviews_product");
+const { crateOrder } = require("../routes/userdata_routes/orders/crate_order");
+const {
+  cnacleOrder,
+} = require("../routes/userdata_routes/orders/remove_order");
+const { allOrder } = require("../routes/userdata_routes/orders/all_order");
+const {
+  userGetAllOrders,
+} = require("../routes/userdata_routes/orders/user_all_order");
 
 router.post("/user/register", userRegister);
 router.post("/user/login", userLogin);
@@ -44,6 +52,10 @@ router.post("/user/showCartData", showCartData);
 router.delete("/user/removeCartData", removeCartData);
 router.post("/user/addReview", addReview);
 router.get("/user/getAllReviewsProduct", getAllReviewsProduct);
+router.post("/user/createOrder", crateOrder);
+router.post("/user/cnacleOrder", cnacleOrder);
+router.get("/user/allOrder", allOrder);
+router.post("/user/userGetAllOrders", userGetAllOrders);
 
 /// PRODUCT ROUTES ///
 const { addProduct } = require("../routes/product_routes/add_product");
