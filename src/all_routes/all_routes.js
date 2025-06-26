@@ -1,0 +1,55 @@
+const express = require("express");
+const router = express.Router();
+
+/// USER ROUTES ///
+const { userRegister } = require("../routes/userdata_routes/user_register");
+const { userLogin } = require("../routes/userdata_routes/user_login");
+const { userDelete } = require("../routes/userdata_routes/user_delete");
+const { getAllUsers } = require("../routes/userdata_routes/all_user");
+const { updateUser } = require("../routes/userdata_routes/user_update");
+const {
+  resetPassword,
+} = require("../routes/userdata_routes/user_resetpassword");
+const { addCart } = require("../routes/userdata_routes/use_add_cart_product");
+const { showCartData } = require("../routes/userdata_routes/user_all_cartdata");
+const {
+  addReview,
+} = require("../routes/userdata_routes/user_add_review_product");
+const {
+  forgotPassword,
+} = require("../routes/userdata_routes/user_forgot_password");
+const {
+  removeCartData,
+} = require("../routes/userdata_routes/user_remove_cartdata");
+const { getAllReviewsProduct} = require("../routes/userdata_routes/use_get_all_reviews_product");
+
+
+router.post("/user/register", userRegister);
+router.post("/user/login", userLogin);
+router.delete("/user/delete/:id", userDelete);
+router.put("/user/update/:id", updateUser);
+router.get("/user/getAllUsers", getAllUsers);
+router.post("/user/resetPassword/:token", resetPassword);
+router.post("/user/addCart", addCart);
+router.post("/user/showCartData", showCartData);
+router.post("/user/addReview", addReview);
+router.post("/user/forgotPassword", forgotPassword);
+router.delete("/user/removeCartData", removeCartData);
+router.get("/user/getAllReviewsProduct", getAllReviewsProduct);
+
+
+
+/// PRODUCT ROUTES ///
+const { addProduct } = require("../routes/product_routes/add_product");
+const { getAllProducts } = require("../routes/product_routes/all_product");
+const { updateProduct } = require("../routes/product_routes/update_product");
+const { deleteProduct } = require("../routes/product_routes/delete_product");
+const { getProductByid } = require("../routes/product_routes/details_product");
+
+router.post("/product/addProductData", addProduct);
+router.get("/product/getAllProducts", getAllProducts);
+router.put("/product/updateProduct/:id", updateProduct);
+router.delete("/product/deleteProduct/:id", deleteProduct);
+router.get("/product/getProductByid/:id", getProductByid);
+
+module.exports = router;
