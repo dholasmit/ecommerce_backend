@@ -39,6 +39,12 @@ const { allOrder } = require("../routes/userdata_routes/orders/all_order");
 const {
   userGetAllOrders,
 } = require("../routes/userdata_routes/orders/user_all_order");
+const {
+  initializePaymentRazorpay,
+} = require("../routes/userdata_routes/payment/razorpay_pyment");
+const {
+  paypalPayment,
+} = require("../routes/userdata_routes/payment/paypal_payment");
 
 router.post("/user/register", userRegister);
 router.post("/user/login", userLogin);
@@ -56,6 +62,8 @@ router.post("/user/createOrder", crateOrder);
 router.post("/user/cnacleOrder", cnacleOrder);
 router.get("/user/allOrder", allOrder);
 router.post("/user/userGetAllOrders", userGetAllOrders);
+router.post("/user/initializePaymentRazorpay", initializePaymentRazorpay);
+router.post("/user/paypalPayment", paypalPayment);
 
 /// PRODUCT ROUTES ///
 const { addProduct } = require("../routes/product_routes/add_product");
