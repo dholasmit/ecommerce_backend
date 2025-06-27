@@ -23,7 +23,7 @@ async function paypalPayment(req, res) {
         {
           amount: {
             currency_code,
-            value: amount.toString() * 100,
+            value: amount.toString(),
             clintId,
             ProductId,
           },

@@ -13,7 +13,7 @@ async function initializePaymentRazorpay(req, res) {
       return res.status(400).json({ message: "All fields are required" });
     }
     const orders = {
-      amount: Math.round(amount * 100),
+      amount: Math.round(amount),
       currency,
       receipt: `receipt_${Date.now()}`,
       notes: {
