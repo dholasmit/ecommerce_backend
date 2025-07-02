@@ -50,22 +50,26 @@ const {
 
 router.post("/user/register", userRegister);
 router.post("/user/login", userLogin);
-router.delete("/user/delete/:id", userDelete);
-router.post("/user/resetPassword/:token",resetPassword);
+router.delete("/user/delete/:id", authMiddleware, userDelete);
+router.post("/user/resetPassword/:token", resetPassword);
 router.post("/user/forgotPassword", forgotPassword);
-router.put("/user/update/:id", updateUser);
+router.put("/user/update/:id", authMiddleware, updateUser);
 router.get("/user/getAllUsers", getAllUsers);
-router.post("/user/addCart", addCart);
-router.post("/user/showCartData", showCartData);
-router.delete("/user/removeCartData", removeCartData);
-router.post("/user/addReview",authMiddleware, addReview);
+router.post("/user/addCart", authMiddleware, addCart);
+router.post("/user/showCartData", authMiddleware, showCartData);
+router.delete("/user/removeCartData", authMiddleware, removeCartData);
+router.post("/user/addReview", authMiddleware, addReview);
 router.get("/user/getAllReviewsProduct", getAllReviewsProduct);
-router.post("/user/createOrder", crateOrder);
-router.post("/user/cnacleOrder", cnacleOrder);
+router.post("/user/createOrder", authMiddleware, crateOrder);
+router.post("/user/cnacleOrder", authMiddleware, cnacleOrder);
 router.get("/user/allOrder", allOrder);
-router.post("/user/userGetAllOrders", userGetAllOrders);      
-router.post("/user/initializePaymentRazorpay", initializePaymentRazorpay);
-router.post("/user/paypalPayment", paypalPayment);
+router.post("/user/userGetAllOrders", authMiddleware, userGetAllOrders);
+router.post(
+  "/user/initializePaymentRazorpay",
+  authMiddleware,
+  initializePaymentRazorpay
+);
+router.post("/user/paypalPayment", authMiddleware, paypalPayment);
 
 /// PRODUCT ROUTES ///
 const { addProduct } = require("../routes/product_routes/add_product");
