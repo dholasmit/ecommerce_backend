@@ -25,6 +25,18 @@ app.get("/", (req, res) => {
   res.send("Express server is running");
 });
 
+/// how to use this function in this file
+// app.use((err, res, req, next) => {
+//   console.error("ERROR STACK ==>", err.stack);
+//   console.log("REQUEST METHOD  ==>", req.method);
+//   console.log("REQUEST URL  ==>", req.url);
+//   console.log(" NEXT FUNCTRION ==>", next);
+//   res.satus(500).json({
+//     status: "error",
+//     message: err.message || "Internal Server Error",
+//   });
+// });
+
 // Start server
 app.listen(PORT, () => {
   console.log(`Server started on http://localhost:${PORT}`);
