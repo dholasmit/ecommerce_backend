@@ -47,6 +47,7 @@ const {
 const {
   paypalPayment,
 } = require("../routes/userdata_routes/payment/paypal_payment");
+const {addFavorite} = require ("../routes/userdata_routes/favorite/add_favorite");
 
 router.post("/user/register", userRegister);
 router.post("/user/login", userLogin);
@@ -70,6 +71,7 @@ router.post(
   initializePaymentRazorpay
 );
 router.post("/user/paypalPayment", authMiddleware, paypalPayment);
+router.post("/user/addFavorite", addFavorite);
 
 /// PRODUCT ROUTES ///
 const { addProduct } = require("../routes/product_routes/add_product");
