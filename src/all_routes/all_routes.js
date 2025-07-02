@@ -47,7 +47,12 @@ const {
 const {
   paypalPayment,
 } = require("../routes/userdata_routes/payment/paypal_payment");
-const {addFavorite} = require ("../routes/userdata_routes/favorite/add_favorite");
+const {
+  addFavorite,
+} = require("../routes/userdata_routes/favorite/add_favorite");
+const {
+  allFavorite,
+} = require("../routes/userdata_routes/favorite/all_favorite");
 
 router.post("/user/register", userRegister);
 router.post("/user/login", userLogin);
@@ -72,6 +77,7 @@ router.post(
 );
 router.post("/user/paypalPayment", authMiddleware, paypalPayment);
 router.post("/user/addFavorite", addFavorite);
+router.post("/user/allFavorite", allFavorite);
 
 /// PRODUCT ROUTES ///
 const { addProduct } = require("../routes/product_routes/add_product");
