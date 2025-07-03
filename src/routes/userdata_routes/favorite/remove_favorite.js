@@ -37,15 +37,13 @@ async function removeFavorite(req, res) {
     // Remove the product from the favorites list
     user.favorites.splice(productIndex, 1);
 
-    // Save the updated user document
     await user.save();
-    // Populate the favorites with product details
     const updatedUser = await UserData.findById(userId).populate("favorites");
 
     res.status(200).json({
       status: 200,
       message: "Product removed from favorites successfully",
-      favorites: updatedUser.favorites,
+      // favorites: updatedUser.favorites,
     });
   } catch (error) {
     console.error("Error removing favorite:", error);
