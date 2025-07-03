@@ -25,12 +25,12 @@ async function addFavorite(req, res) {
     user.favorites = user.favorites || [];
     user.favorites.push(productId);
     await user.save();
-    const updatedUser = await ProductData.findById(productId);
+    const favoriteProduct = await ProductData.findById(productId);
 
     res.status(200).json({
       status:200,
       message: "Product added to favorites",
-      updatedUser,
+      favoriteProduct,
     });
   } catch (error) {
     res.status(500).json({ message: error.message });

@@ -53,6 +53,9 @@ const {
 const {
   allFavorite,
 } = require("../routes/userdata_routes/favorite/all_favorite");
+const {
+  removeFavorite,
+} = require("../routes/userdata_routes/favorite/remove_favorite");
 
 router.post("/user/register", userRegister);
 router.post("/user/login", userLogin);
@@ -78,6 +81,7 @@ router.post(
 router.post("/user/paypalPayment", authMiddleware, paypalPayment);
 router.post("/user/addFavorite", addFavorite);
 router.post("/user/allFavorite", allFavorite);
+router.post("/user/removeFavorite", removeFavorite);
 
 /// PRODUCT ROUTES ///
 const { addProduct } = require("../routes/product_routes/add_product");
