@@ -56,6 +56,9 @@ const {
 const {
   removeFavorite,
 } = require("../routes/userdata_routes/favorite/remove_favorite");
+const {
+  searchProduct,
+} = require("../routes/userdata_routes/search/search_product");
 
 router.post("/user/register", userRegister);
 router.post("/user/login", userLogin);
@@ -68,10 +71,10 @@ router.post("/user/addCart", authMiddleware, addCart);
 router.post("/user/showCartData", authMiddleware, showCartData);
 router.delete("/user/removeCartData", authMiddleware, removeCartData);
 router.post("/user/addReview", authMiddleware, addReview);
-router.get("/user/getAllReviewsProduct", getAllReviewsProduct);
+router.get("/user/getAllReviewsProduct", authMiddleware, getAllReviewsProduct);
 router.post("/user/createOrder", authMiddleware, crateOrder);
 router.post("/user/cnacleOrder", authMiddleware, cnacleOrder);
-router.get("/user/allOrder", allOrder);
+router.get("/user/allOrder", authMiddleware, allOrder);
 router.post("/user/userGetAllOrders", authMiddleware, userGetAllOrders);
 router.post(
   "/user/initializePaymentRazorpay",
@@ -79,9 +82,10 @@ router.post(
   initializePaymentRazorpay
 );
 router.post("/user/paypalPayment", authMiddleware, paypalPayment);
-router.post("/user/addFavorite", addFavorite);
-router.post("/user/allFavorite", allFavorite);
-router.post("/user/removeFavorite", removeFavorite);
+router.post("/user/addFavorite", authMiddleware, addFavorite);
+router.post("/user/allFavorite", authMiddleware, allFavorite);
+router.post("/user/removeFavorite", authMiddleware, removeFavorite);
+router.get("/user/searchProduct", searchProduct);
 
 /// PRODUCT ROUTES ///
 const { addProduct } = require("../routes/product_routes/add_product");
