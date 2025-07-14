@@ -1,5 +1,7 @@
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
+const multer = require("multer");
+const path = require("path");
 
 const authMiddleware = (req, res, next) => {
   console.log(`Request Method: ${req.method}`);
@@ -23,5 +25,27 @@ const authMiddleware = (req, res, next) => {
     return res.status(403).json({ message: "Forbidden" });
   }
 };
+/// image
 
-module.exports = { authMiddleware };
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "uploads/"); // Directory where images will be stored
+  },
+  filename: (req, file, cb) => {
+    cb(null, `${Date.now()}-${file.originalname}`); // Unique filename
+  },
+});
+
+const upload = multer({
+  storage,
+  fileFilter: (req, file, cb) => {
+    const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
+    if (allowedTypes.includes(file.mimetype)) {
+      cb(null, true);
+    } else {
+      cb(new Error("Invalid file type. Only JPEG, PNG, and GIF are allowed."));
+    }
+  },
+});
+
+module.exports = { authMiddleware, upload };

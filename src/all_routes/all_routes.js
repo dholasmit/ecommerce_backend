@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 /// middleware
-const { authMiddleware } = require("../all_routes/middleware");
+const { authMiddleware, upload } = require("../all_routes/middleware");
 
 /// USER ROUTES ///
 const {
@@ -60,7 +60,7 @@ const {
   searchProduct,
 } = require("../routes/userdata_routes/search/search_product");
 
-router.post("/user/register", userRegister);
+router.post("/user/register", upload.single("image"), userRegister);
 router.post("/user/login", userLogin);
 router.delete("/user/delete/:id", authMiddleware, userDelete);
 router.post("/user/resetPassword/:token", resetPassword);
