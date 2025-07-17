@@ -65,7 +65,7 @@ router.post("/user/login", userLogin);
 router.delete("/user/delete/:id", authMiddleware, userDelete);
 router.post("/user/resetPassword/:token", resetPassword);
 router.post("/user/forgotPassword", forgotPassword);
-router.put("/user/update/:id", authMiddleware, updateUser);
+router.post("/user/update/:id",upload.single("image"),updateUser);
 router.get("/user/getAllUsers", getAllUsers);
 router.post("/user/addCart", authMiddleware, addCart);
 router.post("/user/showCartData", authMiddleware, showCartData);

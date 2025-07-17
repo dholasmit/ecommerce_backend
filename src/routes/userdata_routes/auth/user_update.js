@@ -1,9 +1,14 @@
 const UserData = require("../../../models/user_model");
+const upload = require("../../../all_routes/middleware");
 
 // update user is pending its not working right now
 async function updateUser(req, res) {
   try {
-    const { image, name } = req.body;
+    const { name } = req.body;
+    const image = req.file ? req.file.filename : null;
+    if (!name || !image) {
+      return res.status(400).json({ message: "name and image are required" });
+    }
     const update = await UserData.findByIdAndUpdate(
       req.params.id,
       { image, name },
